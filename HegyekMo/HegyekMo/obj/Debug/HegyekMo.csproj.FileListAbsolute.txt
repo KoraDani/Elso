@@ -1,0 +1,6 @@
+C:\Users\korad\Desktop\HegyekMo\HegyekMo\bin\Debug\HegyekMo.exe.config
+C:\Users\korad\Desktop\HegyekMo\HegyekMo\bin\Debug\HegyekMo.exe
+C:\Users\korad\Desktop\HegyekMo\HegyekMo\bin\Debug\HegyekMo.pdb
+C:\Users\korad\Desktop\HegyekMo\HegyekMo\obj\Debug\HegyekMo.csprojAssemblyReference.cache
+C:\Users\korad\Desktop\HegyekMo\HegyekMo\obj\Debug\HegyekMo.exe
+C:\Users\korad\Desktop\HegyekMo\HegyekMo\obj\Debug\HegyekMo.pdb
