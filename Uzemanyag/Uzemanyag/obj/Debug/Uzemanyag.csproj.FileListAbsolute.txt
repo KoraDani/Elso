@@ -1,0 +1,6 @@
+C:\Users\korad\Desktop\c# Programozás\Uzemanyag\Uzemanyag\bin\Debug\Uzemanyag.exe.config
+C:\Users\korad\Desktop\c# Programozás\Uzemanyag\Uzemanyag\bin\Debug\Uzemanyag.exe
+C:\Users\korad\Desktop\c# Programozás\Uzemanyag\Uzemanyag\bin\Debug\Uzemanyag.pdb
+C:\Users\korad\Desktop\c# Programozás\Uzemanyag\Uzemanyag\obj\Debug\Uzemanyag.csprojAssemblyReference.cache
+C:\Users\korad\Desktop\c# Programozás\Uzemanyag\Uzemanyag\obj\Debug\Uzemanyag.exe
+C:\Users\korad\Desktop\c# Programozás\Uzemanyag\Uzemanyag\obj\Debug\Uzemanyag.pdb
