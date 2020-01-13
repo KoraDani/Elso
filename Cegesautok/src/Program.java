@@ -40,6 +40,14 @@ public class Program {
 		}
 		return szamlalo0-szamlalo1;
 	}
+	public static List<Adatok> kmallas(List<Adatok> adatoklista,String rendszam, int km){
+		for(int i = 0; i< adatoklista.size(); i++) {
+			if (egyrendszam == null) {
+				egyrendszam == 
+			}
+		}
+		return null;
+	} 
 	public static void main(String[] args) {
 		
 		// TODO Auto-generated method stub
@@ -69,6 +77,9 @@ public class Program {
 					System.out.println(napadatok.get(i).ora + " " + napadatok.get(i).rendszam + " " + napadatok.get(i).szemelyi + (napadatok.get(i).kibe == 0?"Ki":"Be"));
 				}
 				System.out.println("Hónap végén " + darabszam(adatoklista) + " autót nem hoztak vissza");
+				for(int i = 0; i< adatoklista.size(); i++) {
+					
+				}
 			} catch (FileNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
