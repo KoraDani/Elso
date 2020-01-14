@@ -6,5 +6,5 @@ public class Adatok {
 	public int szemelyi;
 	public int km;
 	public int kibe;
-	public String egyrendszam;
+	public String[] egyrendszam;
 }
