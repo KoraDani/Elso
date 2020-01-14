@@ -63,9 +63,9 @@ public class Program {
 					adatoklista.add(adatok);
 					//5. feladat
 					for (int i = 0; i < adatoklista.size(); i++) {
-						if (adatok.rendszam != soradatok[2]) {
+						/*if (adatok.rendszam != soradatok[2]) {
 							adatok.rendszam = soradatok[2];
-						}
+						}*/
 					}
 				}
 
@@ -92,9 +92,7 @@ public class Program {
 			
 	}
 
-	private static String rszam(int i) {
-		// TODO Auto-generated method stub
-		return null;
+
 	}
 
-}
+
