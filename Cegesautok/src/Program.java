@@ -40,8 +40,25 @@ public class Program {
 		}
 		return szamlalo0-szamlalo1;
 	}
+	//6. feladat ebben sem stimmel valami
+	public static int leghoszzut (List<Adatok> adatoklista) {
+		int elsoindex = 0;
+		int megtettkm = 0;
+		int azonosito = adatoklista.get(0).szemelyi;
+		int veglegmegtett = 0;
+		for (int i = 0; i < 1; i++){
+			if (azonosito == adatoklista.get(i).szemelyi && adatoklista.get(i).kibe == 0) {
+				elsoindex = i;
+				azonosito = adatoklista.get(i).szemelyi;
+				if (azonosito == adatoklista.get(i).szemelyi && adatoklista.get(i).kibe == 1 && megtettkm < adatoklista.get(i).km - adatoklista.get(elsoindex).km) {
+					veglegmegtett = adatoklista.get(elsoindex).km - adatoklista.get(i).km;
+					return veglegmegtett;
 
-	
+				}
+			}
+		}
+		return veglegmegtett;
+	}
 	
 	public static void main(String[] args) {
 		
@@ -63,9 +80,9 @@ public class Program {
 					adatoklista.add(adatok);
 					//5. feladat
 					for (int i = 0; i < adatoklista.size(); i++) {
-						/*if (adatok.rendszam != soradatok[2]) {
+						if (adatok.rendszam != soradatok[2]) {
 							adatok.rendszam = soradatok[2];
-						}*/
+						}
 					}
 				}
 
@@ -81,10 +98,10 @@ public class Program {
 				System.out.println("Hónap végén " + darabszam(adatoklista) + " autót nem hoztak vissza");
 				
 			
-				for (int i = 0; i < 10; i++) {
+				for (int i = 0; i < 1; i++) {
 					System.out.println(adatok.rendszam);
 				}
-
+				System.out.println(leghoszzut(adatoklista));
 			} catch (FileNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
