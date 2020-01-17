@@ -1,7 +1,10 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Program {
@@ -43,33 +46,67 @@ public class Program {
 	//6. feladat ebben sem stimmel valami
 	public static int  leghoszzut (List<Adatok> adatoklista) {
 		int elsoindex = 0;
-		int megtettkm = 0;
+		//int megtettkm = 0;
 		int azonosito = adatoklista.get(0).szemelyi;
-		int veglegmegtett = 0;
+		//int veglegmegtett = 0;
+		List<Integer> maxkm = new ArrayList<Integer>();
 		//int[] vissza = new int[2];
-		for (int i = 0; i < 500; i++){
+		for (int i = 0; i < adatoklista.size(); i++){
+			azonosito = adatoklista.get(i).szemelyi;
 			if (azonosito == adatoklista.get(i).szemelyi && adatoklista.get(i).kibe == 0) {
 				elsoindex = i;
-				azonosito = adatoklista.get(i).szemelyi;
 				
+				for (int j = i+1; j < adatoklista.size(); j++){
+					//if (azonosito == adatoklista.get(j).szemelyi && adatoklista.get(j).kibe == 1 && megtettkm > adatoklista.get(j).km - adatoklista.get(elsoindex).km) {
+					if (azonosito == adatoklista.get(j).szemelyi && adatoklista.get(j).kibe == 1) {	
+						maxkm.add(  Math.abs(adatoklista.get(i).km - adatoklista.get(j).km));
+						//vissza[1] = i;
+						
 			}
-			if (azonosito == adatoklista.get(i).szemelyi && adatoklista.get(i).kibe == 1) {
-			for (int j = 2; j < 500; j++){
-				//if (azonosito == adatoklista.get(j).szemelyi && adatoklista.get(j).kibe == 1 && megtettkm > adatoklista.get(j).km - adatoklista.get(elsoindex).km) {
-					
-					veglegmegtett = Math.abs(adatoklista.get(elsoindex).km - adatoklista.get(j).km);
-					//vissza[1] = i;
-					return veglegmegtett;
-		}}}
-		return veglegmegtett;
+			}
+			
+			}}
+		return max(maxkm);
 		
 		
 	}
 	
+	public static void rendszamok(List<Adatok> adrendsz) {
+		Map<String, Integer> map = new LinkedHashMap<String, Integer>();
+		List<Integer> eredeti = new ArrayList<Integer>();
+		for (int i = 0; i < adrendsz.size(); i++) {
+			Adatok adat = adrendsz.get(i);
+			if (map.get(adrendsz.get(i).rendszam)== null) {
+				eredeti.add(adrendsz.get(i).km);
+				map.put(adat.rendszam, adat.km);
+				}
+			else {
+				map.put(adat.rendszam, adat.km);
+			}
+		}
+		
+		int i = 0;
+		for(Map.Entry<String, Integer> entry: map.entrySet()) {
+			
+			System.out.println(entry.getKey()+" " + Math.abs(entry.getValue() - eredeti.get(i++))+ " km");
+		}
+		
+	}
+	
+	public static int max(List<Integer> maxkm) {
+		int b = 0;
+		for(Integer elem: maxkm) {
+			if (elem > b) {
+				b = elem;
+			}
+		}
+		
+		return b;
+	}
 	public static void main(String[] args) {
 		
 		// TODO Auto-generated method stub
-			File autok = new File("C:\\Users\\korad\\Desktop\\test2\\Cegesautok\\src\\autok.txt");
+			File autok = new File("C:\\Users\\Család\\Desktop\\Java\\Cegesautok\\src\\autok.txt");
 			try {
 				Scanner olvaso = new Scanner(autok);
 				List<Adatok> adatoklista = new ArrayList<Adatok>();
@@ -88,7 +125,10 @@ public class Program {
 					//5. feladat
 
 				}
-				String[] rendszamok = {"CEG300","CEG301","CEG302","CEG303","CEG304","CEG305","CEG306","CEG307","CEG308","CEG309"};
+				
+				
+				
+				/*String[] rendszamok = {"CEG300","CEG301","CEG302","CEG303","CEG304","CEG305","CEG306","CEG307","CEG308","CEG309"};
 				int osszkm = 0;
 				for (int i = 0; i < adatoklista.size(); i++) {
 					if (rendszamok[i] == adatoklista.get(i).rendszam) { //itt elakad mert a több határin kívül esik az érték asszem
@@ -96,7 +136,7 @@ public class Program {
 							osszkm += adatoklista.get(i).km;
 						}
 					}
-				}
+				}*/
 				Adatok adatok = maximum(adatoklista);
 				System.out.println(adatok.nap + "nap rendszám " + adatok.rendszam);
 				Scanner sc = new Scanner(System.in);
@@ -108,10 +148,9 @@ public class Program {
 				}
 				System.out.println("Hónap végén " + darabszam(adatoklista) + " autót nem hoztak vissza");
 				
+				rendszamok(adatoklista);
+
 				
-				for (int i = 0; i < 4; i++) {
-					System.out.println(osszkm);
-				}
 				System.out.println("6. feladat "+leghoszzut(adatoklista));
 			} catch (FileNotFoundException e) {
 				// TODO Auto-generated catch block
