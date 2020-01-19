@@ -1,5 +1,7 @@
 		import java.io.File;
-		import java.util.ArrayList;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -27,8 +29,8 @@ public class Helsinki1 {
 		System.out.println("4. feladat \n Arany " + arany + "\n Ezüst " + ezust + "\n Bronz " + bronz + "\n Összesen " + (arany +ezust+bronz));
 	} 
 	public static void pontszam(List<Helsinkiadatok> adatoklist){
+		//5. feladat
 		int osszpont = 0;
-		//int hely =1;
 		for (int i = 0; i < adatoklist.size(); ++i) {
 			switch (adatoklist.get(i).helyezes)
             {
@@ -46,22 +48,61 @@ public class Helsinki1 {
 	}
 	
 	public static void sportag(List<Helsinkiadatok> adatoklist) {
-		//itt valami nem stimmel
+		//6. feladat
 		int torna = 0, uszas = 0;
 		for (int i = 0; i < adatoklist.size(); i++) {
-			if (adatoklist.get(i).kategoria == "torna") {
-				torna++;
-			}if (adatoklist.get(i).kategoria == "uszas") {
+			if (adatoklist.get(i).kategoria == "uszas") {
 				uszas++;
 			}
+			if (adatoklist.get(i).kategoria == "torna") {
+				torna++;
+			}
 		}
-		if (torna> uszas) {
+		if (torna <= uszas) {
 			System.out.println("Torna sportágban szereztek több érmet");
-		}if (torna < uszas) {
+		}
+		else if (torna >= uszas) {
 			System.out.println("Úszás sportágban szereztek több érmet");
-		} else{
+		}
+		else{
 			System.out.println("Egyenlõ volt az érmek száma");
 		}
+	}
+	
+	public static void Iro(List<Helsinkiadatok> adatoklist) {
+		//7.feladat
+		try {
+			FileWriter iro = new FileWriter("helsinki2.txt");
+			for (int i = 0; i < adatoklist.size(); i++) {
+				iro.write(adatoklist.get(i).helyezes+" ");
+				iro.write(adatoklist.get(i).sportoloszam+" ");
+				//itt nem tudom mi a gond
+				if(adatoklist.get(i).helyezes==1) iro.write("7 ");
+				 else iro.write(7-adatoklist.get(i).helyezes);
+				//itt valamiért nem írja át	
+				if (adatoklist.get(i).kategoria == "kajakkenu") {
+					iro.write("kajak-kenu ");
+				}else {
+					iro.write(adatoklist.get(i).kategoria+" ");
+				}
+				iro.write(adatoklist.get(i).versenyszam+"\n");
+			}
+			iro.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public static void legtobbhely(List<Helsinkiadatok> adatoklist) {
+		//8.feladat
+		int max = 0;
+		for (int i = 0; i < adatoklist.size(); i++) {
+			if (adatoklist.get(i).sportoloszam >adatoklist.get(max).sportoloszam) {
+				max =i;
+			}
+		}
+		System.out.println("8. feladat \n Helyezés " + adatoklist.get(max).helyezes + "\n Sportág " + adatoklist.get(max).kategoria+ "\n Versenyszám " + adatoklist.get(max).versenyszam + "\n Sportolók száma " + adatoklist.get(max).sportoloszam );
 	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -86,6 +127,10 @@ public class Helsinki1 {
 					pontszam(adatoklist);
 					
 					sportag(adatoklist);
+					
+					Iro(adatoklist);
+					
+					legtobbhely(adatoklist);
 				} catch (Exception e) {
 					// TODO: handle exception
 				}
