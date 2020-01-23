@@ -1,5 +1,7 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -106,7 +108,8 @@ public class Program {
 	public static void main(String[] args) {
 		
 		// TODO Auto-generated method stub
-			File autok = new File("C:\\Users\\Család\\Desktop\\Java\\Cegesautok\\src\\autok.txt");
+			//autok = new File("C:\\Users\\Család\\Desktop\\Java\\Cegesautok\\src\\autok.txt");
+			File autok = new File("C:\\Users\\korad\\Desktop\\test2\\Cegesautok\\src\\autok.txt");
 			try {
 				Scanner olvaso = new Scanner(autok);
 				List<Adatok> adatoklista = new ArrayList<Adatok>();
@@ -152,6 +155,23 @@ public class Program {
 
 				
 				System.out.println("6. feladat "+leghoszzut(adatoklista));
+				
+
+				Scanner sc2 = new Scanner(System.in);
+				System.out.println("Kérek egy rendszámot ");
+				String rendsz = sc2.nextLine();
+				FileWriter iro = new FileWriter(rendsz +"_menetlevel.txt");
+				for (int i = 0; i < adatoklista.size(); i++) {
+					
+					if (rendsz == adatoklista.get(i).rendszam ) {
+						iro.write(adatoklista.get(i).szemelyi+" "+ adatoklista.get(i).nap+ " " + adatoklista.get(i).rendszam);
+						iro.close();
+						if (adatoklista.get(i).kibe == 1) {
+							iro.write("\t" + adatoklista.get(i).szemelyi+" "+ adatoklista.get(i).nap+ " " + adatoklista.get(i).rendszam);
+						}
+						System.out.println(adatoklista.get(i).szemelyi+" "+ adatoklista.get(i).nap+ " " + adatoklista.get(i).rendszam );
+					}
+				}
 			} catch (FileNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
