@@ -70,16 +70,23 @@ public class Main {
 			Scanner az = new Scanner(System.in);
 			System.out.println("Kérek egy azonosítót: ");
 			String azon = az.nextLine();
+			/*8. feladat*/int osszperc = 0;
+			//7. feladat
 			for (int i = 0; i < adatoklista.size(); i++) {
 				if (Integer.parseInt(azon) == adatoklista.get(i).getAzonosito() && adatoklista.get(i).isKibe() == true) {
 					System.out.print(adatoklista.get(i).getOra()+ ":"+adatoklista.get(i).getPerc());
+
+					//itt újra elkezdi nullától számolni 
 					for (int j = 0; j < adatoklista.size(); j++) {
 						if (Integer.parseInt(azon) == adatoklista.get(j).getAzonosito() && adatoklista.get(j).isKibe() == false) {
-							System.out.println("-"+  adatoklista.get(j).getOra() +":"+adatoklista.get(j).getPerc());							
+							System.out.println("-"+  adatoklista.get(j).getOra() +":"+adatoklista.get(j).getPerc());	
+							osszperc = Math.abs(adatoklista.get(i).getPerc() - adatoklista.get(j).getPerc());
 						}
 					}
 				}
 			}
+			
+			System.out.println("8.feladat A(z) "+azon + ". személy összesen "+ osszperc+" percet volt bent, a megfigyelés végén a társalgóban volt.");
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
