@@ -4,6 +4,13 @@ public class Adatok {
 	private int perc;
 	private int azonosito;
 	private boolean kibe;
+	private int ido;
+	public int getIdo() {
+		return ido;
+	}
+	public void setIdo(int ido) {
+		this.ido = ido;
+	}
 	public int getOra() {
 		return ora;
 	}
