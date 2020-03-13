@@ -1,6 +1,5 @@
-import java.io.File;
-import java.io.FileWriter;
-import java.util.ArrayList;
+import java.io.*;
+import java.util.*;
 import java.util.List;
 import java.util.Scanner;
 
@@ -11,8 +10,8 @@ public class cbradio {
 		return ossz;
 	}
 	public static void main(String[] args) {
-		File olvas = new File("C:\\Users\\korad\\Desktop\\test2\\cbradio1\\cb.txt");
-
+		//File olvas = new File("C:\\Users\\korad\\Desktop\\test2\\cbradio1\\cb.txt");
+		File olvas = new File("C:\\Users\\Család\\Documents\\Új git\\cbradio1\\cb.txt");
 		try {
 			Scanner olvaso = new Scanner(olvas);
 			List<adatok> adatoklist = new ArrayList<adatok>();
@@ -68,7 +67,7 @@ public class cbradio {
 			String[] nevek = new String[adatoklist.size()];
 			int sofszam =0;
 			for (int i = 0; i < adatoklist.size(); i++) {
-				if (nevek[i] != adatoklist.get(i).nev) {
+				if (!nevek[i].contains(adatoklist.get(i).nev)) {
 					nevek[i] = adatoklist.get(i).nev;
 					sofszam++;
 				}
@@ -78,6 +77,8 @@ public class cbradio {
 			//9.feladat
 			//itt van megoldásom ami jó lehet de a 8. feladatott meg kéne oldani hozzá
 			//8. feladatban kigyûjtjük a neveket és azt a tömböt felhasználva adjuk hozzá a adások számát ás úgy kiválassztva a maximumot
+			//hasmap végigmenni maxot kiválasztani és az index alapján a nevet lekérdezni
+			//key nevek value adasdarab és hozzá adjuk a db-t
 			//feladatlap http://dload.oktatas.educatio.hu/erettsegi/feladatok_2019osz_kozep/k_infoism_19okt_fl.pdf
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -85,5 +86,6 @@ public class cbradio {
 		}
 		
 	}
+	
 
 }

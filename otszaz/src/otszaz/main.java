@@ -9,7 +9,8 @@ import java.util.Scanner;
 public class main {
 
 	public static void main(String[] args) {
-		File adat = new File("C:\\Users\\korad\\Desktop\\test2\\otszaz\\src\\otszaz\\penztar.txt");
+		//File adat = new File("C:\\Users\\korad\\Desktop\\test2\\otszaz\\src\\otszaz\\penztar.txt");
+		File adat = new File("C:\\Users\\Család\\Documents\\Új git\\otszaz\\src\\otszaz\\penztar.txt");
 		
 		List<adatok> lista = new ArrayList<adatok>();
 		try {
