@@ -10,7 +10,8 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		File adat = new File("C:\\Users\\korad\\Desktop\\test2\\Utazas\\src\\utasadat.txt");
+		//File adat = new File("C:\\Users\\korad\\Desktop\\test2\\Utazas\\src\\utasadat.txt");
+		File adat = new File("C:\\Users\\Család\\Documents\\Új git\\Utazas\\src\\utasadat.txt");
 
 		
 		
@@ -43,8 +44,9 @@ public class Main {
 					map.put(((adatok) adatoklista).getMegsorszam(), szamlalo++);
 				}
 			}
+			//4.feladatott nem tudom hogy kell megoldani
 			for (adatok i : adatoklista) {
-				//4.feladatott nem tudom hogy kell megoldani
+				
 			}	
 			//5.feladat nem mûködik 
 			int ingyenutaz = 0;

@@ -8,7 +8,7 @@ public class Program {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-			File exped = new File("C:\\Users\\korad\\Desktop\\test2\\Expedicio\\src\\veetel.txt");
+			//File exped = new File("C:\\Users\\korad\\Desktop\\test2\\Expedicio\\src\\veetel.txt");
 			try {
 				Scanner olvaso = new Scanner(exped);
 				List<adatok> adatoklista = new ArrayList<adatok>();
