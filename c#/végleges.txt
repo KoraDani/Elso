@@ -1,0 +1,111 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.IO;
+
+namespace EUtazas2020
+{
+    class Program
+    {
+        struct adatok {
+            public int megsorszam;
+            public string datum;
+            public int kartyaaz;
+            public string jegytipus;
+            public int ervenyes;
+        }
+        static void Main(string[] args)
+        {
+            string[] beolvas = File.ReadAllLines("utasadat.txt");
+            List<adatok> adatoklista = new List<adatok>();
+            for (int i = 0; i < beolvas.Length; i++)
+            {
+                string[] egysor = beolvas[i].Split(' ');
+                adatok adat = new adatok();
+                adat.megsorszam = Convert.ToInt32(egysor[0]);
+                adat.datum = egysor[1];
+                adat.kartyaaz = Convert.ToInt32(egysor[2]);
+                adat.jegytipus = egysor[3];
+                adat.ervenyes = Convert.ToInt32(egysor[4]);
+                adatoklista.Add(adat);
+            }
+            Console.WriteLine("3. feladat\nA buszra {0} utas akart felszállni ", beolvas.Length);
+
+            //4.feladat
+            int nemszalhat = 0;
+            for (int i = 0; i < beolvas.Length; i++)
+            {
+                if (adatoklista[i].datum.Substring(0, 8) == Convert.ToString(adatoklista[i].ervenyes) || adatoklista[i].ervenyes == 0)
+                {
+                    nemszalhat++;
+                }
+            }
+            Console.WriteLine(nemszalhat);
+
+            //5.feladat
+            int max = 0; int meg = 0;
+            Dictionary<int, int> statisztika = new Dictionary<int, int>();
+            for (int i = 0; i < adatoklista.Count(); i++)
+
+                if (statisztika.ContainsKey(adatoklista[i].megsorszam))
+
+                    statisztika[adatoklista[i].megsorszam]++;
+
+                else
+
+                    statisztika[adatoklista[i].megsorszam] = 1;
+
+            foreach (int s in statisztika.Keys)
+
+            {
+
+                if (max < statisztika[s])
+
+                {
+
+                    max = statisztika[s];
+
+                    meg = s;
+
+                }
+
+            }
+            Console.WriteLine("5. feladat \nA legtöbb utas ({0} fő) a {1}.megállóban próbált felszállni.", max, meg);
+            
+            //6. feladat
+            int ingyenes = 0;
+            int kedvezmenyes = 0;
+            for (int i = 0; i < beolvas.Length; i++)
+            {
+                if (Convert.ToString(adatoklista[i].ervenyes).Length == 8)
+
+                {
+                    if (adatoklista[i].jegytipus.Equals("NYP") || adatoklista[i].jegytipus.Equals("GYK") || adatoklista[i].jegytipus.Equals("RVS"))
+                    {
+                        ingyenes++;
+                    }
+                    if (adatoklista[i].jegytipus.Equals("TAB") || adatoklista[i].jegytipus.Equals("NYB") && Convert.ToInt32(adatoklista[i].datum.Substring(0, 8)) <= adatoklista[i].ervenyes - 1)
+                    {
+                        kedvezmenyes++;
+                    }
+                }
+            }
+            Console.WriteLine(ingyenes);
+            Console.WriteLine(kedvezmenyes);
+            
+            //7. feladat
+            StreamWriter iro = new StreamWriter("figyelmeztetes.txt");
+            for (int i = 0; i < beolvas.Length; i++)
+            {
+                if (Convert.ToInt32(adatoklista[i].datum.Substring(0,8))+3 == adatoklista[i].ervenyes)
+                {
+                    iro.WriteLine(adatoklista[i].kartyaaz+" "+adatoklista[i].ervenyes);
+                }
+            }
+            iro.Close();
+            Console.ReadKey();
+        }
+    }
+}
