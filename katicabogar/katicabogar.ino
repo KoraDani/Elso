@@ -87,7 +87,7 @@ analogWrite(motorenaB, 255);
      digitalWrite(motor22 ,LOW); 
      Serial.println("Balra");
     }
-    //egyszerre teljesül az hátra feltétellel
+---------------------------------hiba-----------------------------------
     if(olvas2 > 900 && motorbeki){
      digitalWrite(motor11 ,LOW);
      digitalWrite(motor12 ,HIGH);
@@ -95,6 +95,7 @@ analogWrite(motorenaB, 255);
      digitalWrite(motor22 ,HIGH);
      Serial.println("Előre");
       }
+---------------------------------hiba-----------------------------------
     else{
      digitalWrite(motor11 ,LOW);
      digitalWrite(motor12 ,LOW);
@@ -139,7 +140,7 @@ analogWrite(motorenaB, 255);
     //Serial.print("Distance: ");
     //Serial.println(distance);
     
-    //egyszerre teljesül az előre feltétellel
+---------------------------------hiba-----------------------------------
         if(distance < 10 && motorbeki){
            digitalWrite(motor11 ,HIGH);
            digitalWrite(motor12 ,LOW);
@@ -152,6 +153,7 @@ analogWrite(motorenaB, 255);
             digitalWrite(motor21 ,LOW);
             digitalWrite(motor22 ,LOW);
         }
+---------------------------------hiba-----------------------------------
 //----------------------------------------------------------------------------------------------------------------------
     //ütés mérés
     float erzekel = analogRead(A3);
