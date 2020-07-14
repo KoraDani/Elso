@@ -7,23 +7,28 @@
 #include <ThreeWire.h>  
 #include <RtcDS1302.h>
 
-#define CLK 8
-#define DIO 7
+#define CLK 7
+#define DIO 8
 
-ThreeWire myWire(5,4,6); // IO, SCLK, CE
+ThreeWire myWire(5,4,6); // clk= 4 dat= 5 rst = 6
 RtcDS1302<ThreeWire> Rtc(myWire);
 
 TM1637Display display = TM1637Display(CLK, DIO);
 
 int relay = 9;
 
-int red_light_pin= 12;
+int red_light_pin= 10;
 int green_light_pin = 11;
-int blue_light_pin = 10;
+int blue_light_pin = 12;
 
 const int szenzor = A0;
+const int szenzor2 = A1;
+
 int szenzorertek = 0;
 int szazalekertek = 0;
+
+int szenzorertek2 = 0;
+int szazalekertek2 = 0;
 
 const int tranzisztor = 13;
 
@@ -89,6 +94,8 @@ Serial.begin(9600);
   delay(200);
   szenzorertek = analogRead(szenzor);
   szazalekertek = map(szenzorertek, 1023, 300, 0, 100);
+  szenzorertek2 = analogRead(szenzor2);
+  szazalekertek2 = map(szenzorertek2, 1023, 300, 0, 100);
   delay(200);
   digitalWrite(tranzisztor, LOW);
 
@@ -107,35 +114,38 @@ void loop() {
   //delay(2000);
   szenzorertek = analogRead(szenzor);
   szazalekertek = map(szenzorertek, 1023, 300, 0, 100);
+  szenzorertek2 = analogRead(szenzor2);
+  szazalekertek2 = map(szenzorertek2, 1023, 300, 0, 100);
   //delay(2000);
   digitalWrite(tranzisztor, LOW);
 
   }
 
-  if(szazalekertek>= 75){
+  if(szazalekertek>= 75 || szazalekertek2 >= 75){
     RGB_color(0, 0, 255); // Blue
     }
-  if(szazalekertek< 75 && szazalekertek >50){
+  if(szazalekertek < 75 && szazalekertek >50 || szazalekertek2< 75 && szazalekertek2 >50){
       RGB_color(0, 255, 0); // Green
     }
-  if(szazalekertek<= 50 && szazalekertek >25){
+  if(szazalekertek <= 50 && szazalekertek >25 || szazalekertek2 <= 50 && szazalekertek2 >25){
         RGB_color(255, 255, 0); // Yellow
     }
-  if(szazalekertek<= 25 && szazalekertek >=1){
+  if(szazalekertek <= 25 && szazalekertek >=1 || szazalekertek2 <= 25 && szazalekertek2 >=1){
         RGB_color(255, 0, 0); // Red
     }
-  if(szazalekertek == 0){
+  if(szazalekertek == 0 || szazalekertek2 == 0){
       RGB_color(255,0, 0); // Red
     }
 if(ora % 4 == 0){
   magasalacsony = 0;
   }
-  if(ora % 8 == 0 && perc == 0){
+  if(ora % 8 == 0){
   magasalacsony = 1;
   }
 
     digitalWrite(relay,magasalacsony);
     Serial.println(szazalekertek);
+    Serial.println(szazalekertek2);
 
 delay(1000);
 
