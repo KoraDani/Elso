@@ -1,0 +1,44 @@
+html, body{
+    margin: 0;
+    height: 100%;
+}
+div{
+    margin: auto;       /*Ez csak azért van benne hogy középen legyen*/
+    width:80%;
+    height:100%;
+    text-align: center;
+  }
+header{
+    background-color: aqua;
+    height: 15%;
+}
+nav{
+    background-color: greenyellow;
+    height: 30%;
+}
+#egy{
+    background-color: hotpink;
+    height: 50%;        /*Ha section is látni akarjuk akkor a magasságot kisebbre kell állítani*/
+    width: 50%;
+    float: left;
+}
+#ketto{
+    background-color:red;
+    height: 50%;        /*Ha section is látni akarjuk akkor a magasságot kisebbre kell állítani*/
+    width: 50%;
+    float: left;
+}
+section{
+    background-color: indigo;
+    height: 75%;
+}
+aside{
+    background-color: maroon;
+    height: 100%;       /*Ha section is látni akarjuk akkor a magasságot kisebbre kell állítani*/
+    width: 50%;
+    float: right;
+}
+footer{
+    background-color: midnightblue;
+    height: 10%;
+}
